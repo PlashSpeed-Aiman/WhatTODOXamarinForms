@@ -5,7 +5,7 @@
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              xmlns:view="clr-namespace:App2"
              android:TabbedPage.ToolbarPlacement="Bottom"
-             BarBackgroundColor="#2196F3"
+             BarBackgroundColor="#0277bd"
              BarTextColor="White"
              x:Class="App2.MainPage">
     <TabbedPage.Children>
@@ -19,7 +19,7 @@
             </ContentPage.BindingContext>
             <ScrollView>
                 <StackLayout>
-                    <Frame BackgroundColor="#2196F3" Padding="5" CornerRadius="0" HeightRequest="150">
+                    <Frame BackgroundColor="#0277bd" Padding="5" CornerRadius="0" HeightRequest="150">
                         <Grid>
                             <Grid.RowDefinitions>
                                 <RowDefinition Height="*"/>
@@ -67,7 +67,7 @@
             </ScrollView>
         </ContentPage>
 
-        <ContentPage Title="WhatsApp Me" x:Name="WhatsAppPage" >
+        <ContentPage Title="WhatsApp Me" x:Name="WhatsAppPage" BackgroundColor="#e6ffff" >
             <ContentPage.BindingContext>
                 <vm:WhatsappViewModel/>
             </ContentPage.BindingContext>
@@ -78,18 +78,25 @@
                         <RowDefinition Height="5*"/>
 
                     </Grid.RowDefinitions>
-                    <Frame BackgroundColor="#2196F3" Padding="1" CornerRadius="0" VerticalOptions="Start">
+                    <Frame BackgroundColor="#0277bd" Padding="1" CornerRadius="0" VerticalOptions="Start">
                         <Label Text="Wa.me @ Xamarin.Forms!" HorizontalTextAlignment="Center" TextColor="White" FontSize="36"/>
                     </Frame>
                     <StackLayout Spacing="1" VerticalOptions="Center" Grid.Row="1">
-                        
-                        <Label HorizontalTextAlignment="Center" Text="WhatsApp Number" FontSize="25" />
 
-                        <Entry Placeholder="Enter Phone Number Here" TextColor="Black" Keyboard="Telephone" Margin="15,0,10,15" Text="{Binding WhatsappName, Mode=TwoWay}" BackgroundColor="CornflowerBlue"/>
-                        <Frame Margin="15,0,10,15" >
-                            <Label Text="{Binding WhatsappLink}" TextColor="Black" />
+                        <Label HorizontalTextAlignment="Center" Text="WhatsApp Number" FontSize="25" TextColor="Black" />
+
+                        <Entry Placeholder="Enter Phone Number Here" TextColor="Black" Keyboard="Telephone" Margin="15,10,10,15" Text="{Binding WhatsappName, Mode=TwoWay}" />
+                        <Frame Margin="15,0,10,15"  >
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding CopyCommand}" Tapped="OnTapGestureRecognizerTapped" NumberOfTapsRequired="2"/>
+                            </Frame.GestureRecognizers>
+                            <StackLayout>
+                                <Label Text="{Binding WhatsappLink}" TextColor="Black" FontSize="16"  />
+                                <Label Text="Double tap to copy link"/>
+                            </StackLayout>
+                            
                         </Frame>
-                        <Button Text="Add" Command="{Binding MessageCommand}" HeightRequest="50" TextColor="White" BackgroundColor="#2196F3" CornerRadius="5" HorizontalOptions="Center" WidthRequest="200"/>
+                        <Button Text="Add" Command="{Binding MessageCommand}" HeightRequest="50" TextColor="White" BackgroundColor="#0288d1" CornerRadius="5" HorizontalOptions="Center" WidthRequest="200"/>
 
                     </StackLayout>
 

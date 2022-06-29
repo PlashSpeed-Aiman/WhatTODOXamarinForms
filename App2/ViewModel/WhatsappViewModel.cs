@@ -23,11 +23,23 @@ namespace App2.ViewModel
                 return _whatsapplink + "6"+ _whatsappname;
             }
         }
+
+        public ICommand CopyCommand
+        {
+            get;
+        }
+
         public WhatsappViewModel()
         {
             //new Command<object>(async (o) => await MessageLink(o));
             MessageCommand = new Command(async () => await MessageLink());
-            
+            CopyCommand = new Command(async () =>  await CopyText());
+
+        }
+
+        private async Task CopyText()
+        {
+            await Clipboard.SetTextAsync(WhatsappLink);
         }
 
         private Task MessageLink()
