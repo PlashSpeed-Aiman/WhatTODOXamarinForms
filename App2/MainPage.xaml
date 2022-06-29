@@ -5,8 +5,8 @@
              xmlns:android="clr-namespace:Xamarin.Forms.PlatformConfiguration.AndroidSpecific;assembly=Xamarin.Forms.Core"
              xmlns:view="clr-namespace:App2"
              android:TabbedPage.ToolbarPlacement="Bottom"
-            BarBackgroundColor="#2196F3"
-            BarTextColor="White"
+             BarBackgroundColor="#2196F3"
+             BarTextColor="White"
              x:Class="App2.MainPage">
     <TabbedPage.Children>
         <ContentPage Title="TODO"
@@ -52,7 +52,7 @@
                                                         <ColumnDefinition Width="*" />
                                                     </Grid.ColumnDefinitions>
                                                     <CheckBox IsChecked="{Binding isActive}" Grid.Column="0" WidthRequest="10"/>
-                                                    <Button Margin="1" BackgroundColor="White" Text="REMOVE" Command="{Binding Source={x:Reference Name=TodoPage},Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" HorizontalOptions="End" Grid.Column="1"/>
+                                                    <Button Margin="1" Text="REMOVE" Command="{Binding Source={x:Reference Name=TodoPage},Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" HorizontalOptions="End" Grid.Column="1"/>
                                                 </Grid>
                                             </StackLayout>
                                         </Frame>
@@ -84,9 +84,10 @@
                     <StackLayout Spacing="1" VerticalOptions="Center" Grid.Row="1">
                         
                         <Label HorizontalTextAlignment="Center" Text="WhatsApp Number" FontSize="25" />
-                        <Entry  Margin="15,0,10,15" Text="{Binding WhatsappName, Mode=TwoWay}"/>
+
+                        <Entry Placeholder="Enter Phone Number Here" TextColor="Black" Keyboard="Telephone" Margin="15,0,10,15" Text="{Binding WhatsappName, Mode=TwoWay}" BackgroundColor="CornflowerBlue"/>
                         <Frame Margin="15,0,10,15" >
-                            <Label Text="{Binding WhatsappLink}"/>
+                            <Label Text="{Binding WhatsappLink}" TextColor="Black" />
                         </Frame>
                         <Button Text="Add" Command="{Binding MessageCommand}" HeightRequest="50" TextColor="White" BackgroundColor="#2196F3" CornerRadius="5" HorizontalOptions="Center" WidthRequest="200"/>
 

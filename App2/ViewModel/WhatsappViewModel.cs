@@ -4,6 +4,7 @@ using System.Text;
 using System.Windows.Input;
 using Xamarin.Forms;
 using Xamarin.Essentials;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace App2.ViewModel
@@ -14,7 +15,14 @@ namespace App2.ViewModel
         private string _whatsappname = String.Empty;
         private string _whatsapplink = "https://wa.me/";
         public string WhatsappName { get { return _whatsappname; } set { _whatsappname = value; OnPropertyChanged();OnPropertyChanged("WhatsappLink"); } }
-        public string WhatsappLink => _whatsapplink + _whatsappname;
+        public string WhatsappLink
+        {
+            get
+            {
+                _whatsappname = Regex.Replace(_whatsappname, "[^0-9.]", "");
+                return _whatsapplink + "6"+ _whatsappname;
+            }
+        }
         public WhatsappViewModel()
         {
             //new Command<object>(async (o) => await MessageLink(o));
@@ -24,7 +32,7 @@ namespace App2.ViewModel
 
         private Task MessageLink()
         {
-           Launcher.OpenAsync(new System.Uri(_whatsapplink+_whatsappname));
+           Launcher.OpenAsync(new System.Uri(WhatsappLink));
            return Task.CompletedTask;
         }
     }
