@@ -88,7 +88,7 @@
                         <Entry Placeholder="Enter Phone Number Here" TextColor="Black" Keyboard="Telephone" Margin="15,10,10,15" Text="{Binding WhatsappName, Mode=TwoWay}" />
                         <Frame Margin="15,0,10,15"  >
                             <Frame.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding CopyCommand}" Tapped="OnTapGestureRecognizerTapped" NumberOfTapsRequired="2"/>
+                                <TapGestureRecognizer Command="{Binding EditCommand}" CommandParameter="" Tapped="OnTapGestureRecognizerTapped" NumberOfTapsRequired="2"/>
                             </Frame.GestureRecognizers>
                             <StackLayout>
                                 <Label Text="{Binding WhatsappLink}" TextColor="Black" FontSize="16"  />
@@ -97,7 +97,37 @@
                             
                         </Frame>
                         <Button Text="Add" Command="{Binding MessageCommand}" HeightRequest="50" TextColor="White" BackgroundColor="#0288d1" CornerRadius="5" HorizontalOptions="Center" WidthRequest="200"/>
+                        <ListView ItemsSource="{Binding ListWhatsAppNumbers}" Margin="10,0,10,0"  HasUnevenRows="true" SelectedItem="{Binding Test,Mode=TwoWay}" >
+                            <ListView.ItemTemplate>
+                                <DataTemplate>
+                                    <ViewCell >
+                                        <ViewCell.View  >
+                                            <Frame Padding="3"  Margin="10,10,10,10">
+                                                <StackLayout>
+                                                    <Label Padding="5,0,0,0" Text="{Binding Name}"/>
+                                                    <Label FontSize="18" Padding="3,3,3,3" Text="{Binding PhoneNumber}"/>
+                                                    <Label Padding="5,0,0,0" Text="{Binding Description}"/>
+                                                    <Grid >
+                                                        <Grid.ColumnDefinitions>
+                                                            <ColumnDefinition Width="*" />
+                                                            <ColumnDefinition Width="*" />
+                                                        </Grid.ColumnDefinitions>
+                                                        <!--
+                                                        <CheckBox IsChecked="{Binding isActive}" Grid.Column="0" WidthRequest="10"/>
+                                                        -->
+                                                        <!--
+                                                        <Button Margin="1" Text="REMOVE" Command="{Binding Source={x:Reference Name=TodoPage},Path=BindingContext.DeleteCommand}" CommandParameter="{Binding .}" HorizontalOptions="End" Grid.Column="1"/>
+                                                    -->
+                                                    </Grid>
+                                                </StackLayout>
+                                            </Frame>
+                                        </ViewCell.View>
 
+                                    </ViewCell>
+
+                                </DataTemplate>
+                            </ListView.ItemTemplate>
+                        </ListView>
                     </StackLayout>
 
                 </Grid>
